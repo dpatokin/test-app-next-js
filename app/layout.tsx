@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import theme from "../theme";
 import BottomNav from "@/components/BottomNav";
+import { GlobalDataProvider } from "@/context/GlobalDataContext";
 
 export const metadata: Metadata = {
   title: "Cinema Randomizer",
@@ -23,12 +24,14 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Header />
-            {children}
-            <BottomNav />
-          </ThemeProvider>
+          <GlobalDataProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <Header />
+              {children}
+              <BottomNav />
+            </ThemeProvider>
+          </GlobalDataProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
